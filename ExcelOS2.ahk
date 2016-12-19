@@ -38,6 +38,18 @@ If ErrorLevel = 0
 Send {z}
 }
 
+PixelSearch, OutX, OutY, 103, 1325, 270, 1355, 0xFFFFFF, 20, Fast
+If ErrorLevel = 0
+{
+Click 169, 1339
+}
+
+PixelSearch, OutX, OutY, 103, 1325, 270, 1355, 0x8E5F00, 20, Fast
+If ErrorLevel = 0
+{
+Click 169, 1339
+}
+
 ToolTip, "LOOP RESTART", 1732, 174
 Send {w down}
 Send {RShift down}
@@ -74,11 +86,11 @@ Random, counterturnwait, 250, 565
 
 
 ;ImageSearch OutX, OutY, 1830, 1495, 2070, 1620, *50 H:\Shadowplay Captures\Rocket League\Macro\TakumiNOS2.png
-PixelSearch, OutX, OutY, 1850, 1400, 2100, 1600, 0x3BFF5A, 30, Fast
+PixelSearch, OutX, OutY, 1650, 1200, 2100, 2200, 0x30FF4A, 50, Fast
 
 if ErrorLevel = 0
 {
-	ToolTip, "Center found in 1850-2000 w/ 20", 1732, 174
+	ToolTip, Center found in 1850-2000 w/ 20  OutX - %OutX% OutY - %OutY%, 1732, 174
 	Send {w down}
 	Send {RShift down}
 	Sleep, %turnwait%
@@ -93,18 +105,18 @@ Loop
 		break
 	}
 	Random, preciseturnwait, 42, 80
-	PixelSearch, OutX, OutY, 1500, 1300, 2300, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1500, 1200, 2300, 1900, 0x30FF4A, 50, Fast
 	If ErrorLevel = 0
 	{
 	If OutX < 1850
 	{
 	turndir = a
-	Break
+	;Break
 	}
 	Else If OutX > 1950
 	{
 	turndir = d
-	Break
+	;Break
 	}
 	}
 
@@ -113,10 +125,10 @@ Loop
 	Goto Turn
 	}
 	
-	PixelSearch, OutX, OutY, 1900, 1400, 1930, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1890, 1200, 1950, 1900, 0x30FF4A, 50, Fast
 	If ErrorLevel = 0
 	{
-	ToolTip, "Center found in 1900-1930 w/ 20", 1732, 174
+	ToolTip, Center found in 1900-1930 w/ 20 OutX - %OutX% OutY - %OutY%, 1732, 174
 	Send {w down}
 	Sleep, %turnwait2%
 	PixelSearch, OutX, OutY, 3480, 1790, 3500, 1820, 0x83EDFF, 10, Fast
@@ -137,10 +149,10 @@ Loop
 	Sleep, %turnwait%
 
 	PixelCheck:
-	PixelSearch, OutX, OutY, 1900, 1480, 1930, 1520, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1900, 1200, 1950, 1900, 0x30FF4A, 50, Fast
 	If ErrorLevel = 0
 	{
-	ToolTip, "Center found in 1900-1925 w/ 15", 1732, 174
+	ToolTip, Center found in 1900-1925 w/ 15 OutX - %OutX% OutY - %OutY%, 1732, 174
 		Loop
 		{
 			If (breakout = 1)
@@ -154,15 +166,15 @@ Loop
 			ExitApp
 			break
 			}
-		PixelSearch, OutX, OutY, 1900, 1480, 1930, 1520, 0x3BFF5A, 30, Fast
+		PixelSearch, OutX, OutY, 1900, 1200, 1930, 1900, 0x30FF4A, 50, Fast
 		If ErrorLevel = 1
 		{
 		Break
 		}
 		Sleep, %turnwait2%
 		}
-	;Goto PixelCheck
-	Break
+	Goto PixelCheck
+	;Break
 	}
 	
 	}
@@ -184,10 +196,10 @@ Loop
 		Send {%turndir% down}
 		Sleep, %preciseturnwait%
 		Send {%turndir% up}
-		PixelSearch, OutX, OutY, 1900, 1480, 1930, 1520, 0x3BFF5A, 30, Fast
+		PixelSearch, OutX, OutY, 1990, 1200, 1950, 1900, 0x30FF4A, 50, Fast
 		If ErrorLevel = 0
 		{
-		ToolTip, "Center found in 1900-1930 During tiny turn", 1732, 174
+		ToolTip, Center found in 1900-1930 TinyTurn OutX - %OutX% OutY - %OutY%, 1732, 174
 		Loop
 		{
 			If (breakout = 1)
@@ -201,22 +213,22 @@ Loop
 			ExitApp
 			break
 			}
-		PixelSearch, OutX, OutY, 1900, 1480, 1930, 1520, 0x3BFF5A, 30, Fast
+		PixelSearch, OutX, OutY, 1900, 1200, 1940, 1900, 0x30FF4A, 50, Fast
 		If ErrorLevel = 1
 		{
 		Break
 		}
-		Sleep, %turnwait2%
+		Sleep, %turnwait%
 		}
 		}
-		PixelSearch, OutX, OutY, 1500, 1350, 2300, 1600, 0x3BFF5A, 30, Fast
+		PixelSearch, OutX, OutY, 1500, 1200, 2300, 1900, 0x30FF4A, 50, Fast
 		If ErrorLevel = 0
 		{
-			If OutX < 1850
+			If OutX < 1900
 			{
 			turndir = a
 			}
-			Else If OutX > 1925
+			Else If OutX > 1900
 			{
 			turndir = d
 			}
@@ -232,10 +244,10 @@ Loop
 }
 else if ErrorLevel = 1
 {
-ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
+ToolTip, Center not found in 1875-1950 -WideTurn OutX - %OutX% OutY - %OutY%, 1732, 174
 	Looped = True
 	;ImageSearch OutX, OutY, 1830, 1495, 2070, 1620, *50 H:\Shadowplay Captures\Rocket League\Macro\TakumiNOS2.png
-	PixelSearch, OutX, OutY, 1500, 1350, 2300, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1500, 1200, 2300, 1900, 0x30FF4A, 50, Fast
 	If ErrorLevel = 0
 	{
 	If OutX < 1850
@@ -253,7 +265,7 @@ ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
 	Send {LShift down}
 	Send {RShift down}
 	}
-	PixelSearch, OutX, OutY, 1850, 1400, 2100, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1700, 1200, 2100, 1900, 0x30FF4A, 50, Fast
 	If ErrorLevel = 1
 	{
 	TimeToBreak := A_Sec + 4
@@ -290,7 +302,7 @@ ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
 			}
 	Send {w down}
 	Send {%turndir% down}
-	PixelSearch, OutX, OutY, 1850, 1400, 2100, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1850, 1200, 2100, 1900, 0x30FF4A, 50, Fast
 	If (ErrorLevel = 0) Or (A_Sec >= TimeToBreak)
 	{
 	Send {%turndir% up}
@@ -299,17 +311,17 @@ ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
 	{
 	Send {%turndir% up}
 	Send {%turndir% up}
-	Send {d down}
+	;Send {d down}
 	Sleep, %turnwait%
-	Send {d up}
+	;Send {d up}
 	}
 	Else If turndir = d
 	{
 	Send {%turndir% up}
 	Send {%turndir% up}
-	Send {a down}
+	;Send {a down}
 	Sleep, %turnwait%
-	Send {a up}
+	;Send {a up}
 	}
 	Break
 	}
@@ -324,7 +336,7 @@ ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
 	Send {w down}
 	Send {%turndir% down}
 	}
-	PixelSearch, OutX, OutY, 1850, 1400, 2100, 1600, 0x3BFF5A, 30, Fast
+	PixelSearch, OutX, OutY, 1850, 1200, 2100, 1900, 0x30FF4A, 50, Fast
 	If (ErrorLevel = 0) Or (A_Sec >= TimeToBreak)
 	{
 	Send {%turndir% up}
@@ -333,17 +345,17 @@ ToolTip, "Center not found in 1875-1950 - Wide Turn", 1732, 174
 	{
 	Send {%turndir% up}
 	Send {%turndir% up}
-	Send {d down}
+	;Send {d down}
 	Sleep, %turnwait%
-	Send {d up}
+	;Send {d up}
 	}
 	Else If turndir = d
 	{
 	Send {%turndir% up}
 	Send {%turndir% up}
-	Send {a down}
+	;Send {a down}
 	Sleep, %turnwait%
-	Send {a up}
+	;Send {a up}
 	}
 	Break
 	}
