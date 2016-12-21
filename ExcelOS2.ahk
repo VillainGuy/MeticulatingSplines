@@ -182,6 +182,7 @@ Loop
 	{
 		Loop
 		{
+		Random, preciseturnwait, 25, 80
 		ToolTip, "TinyTurn Loop", 1732, 174
 			If (breakout = 1)
 			{
@@ -196,7 +197,7 @@ Loop
 		Send {%turndir% down}
 		Sleep, %preciseturnwait%
 		Send {%turndir% up}
-		PixelSearch, OutX, OutY, 1990, 1200, 1950, 1900, 0x30FF4A, 50, Fast
+		PixelSearch, OutX, OutY, 1900, 1200, 1940, 1900, 0x30FF4A, 50, Fast
 		If ErrorLevel = 0
 		{
 		ToolTip, Center found in 1900-1930 TinyTurn OutX - %OutX% OutY - %OutY%, 1732, 174
